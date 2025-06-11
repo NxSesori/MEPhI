@@ -1,0 +1,19 @@
+CC ?= gcc
+
+CFLAGS = -c -Wall
+LDFLAGS = 
+
+SRCS = matrix.c own_number.c main.c 
+OBJS = $(SRCS:.c=.o)
+EXE = example
+
+all: $(SRCS) $(EXE)
+
+$(EXE): $(OBJS)
+	$(CC) $(LDFLAGS) $(OBJS) -o $@ -lm
+
+.c.o:
+	$(CC) $(CFLAGS) $< -o $@ -lm
+
+clean: 
+	rm -rf *.o $(EXE)
